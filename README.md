@@ -8,6 +8,10 @@ Audio Insight is a FastAPI application that transcribes and summarizes audio fil
 - Get a summarized version of the transcriptions.
 - View timestamps of transcribed segments.
 
+## Results 
+![image](https://github.com/rahul8020/Audio-Insight-Using-Wisper/assets/97680641/efa94408-9062-4ab4-9226-3bee20d5c2ac)
+
+
 # Install and Download Following Dependencies 👇:
 1. Installing Modules 
 ```
