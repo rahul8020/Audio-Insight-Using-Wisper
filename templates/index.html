@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WhisperSummarizer</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload an Audio File for Transcription</h1>
+        <form id="upload-form" action="/whisper" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="processing" style="display:none;">
+            <p>Processing... Please wait.</p>
+        </div>
+        <div id="results" style="display:none;">
+            <h2>Results</h2>
+            <p><strong>Filename:</strong> <span id="filename"></span></p>
+            <p><strong>Transcription:</strong> <span id="transcription"></span></p>
+            <p><strong>Summary:</strong> <span id="summary"></span></p>
+            <h3>Timestamps:</h3>
+            <ul id="timestamps"></ul>
+        </div>
+    </div>
+    <script>
+        document.getElementById("upload-form").onsubmit = async (event) => {
+            event.preventDefault();
+            document.getElementById("processing").style.display = "block";
+            document.getElementById("results").style.display = "none";
+            
+            const formData = new FormData(event.target);
+            const response = await fetch("/whisper", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+            document.getElementById("processing").style.display = "none";
+            document.getElementById("results").style.display = "block";
+            document.getElementById("filename").textContent = result.filename;
+            document.getElementById("transcription").textContent = result.transcription;
+            document.getElementById("summary").textContent = result.summary;
+
+            const timestamps = result.timestamps;
+            const timestampsList = document.getElementById("timestamps");
+            timestampsList.innerHTML = "";
+            timestamps.forEach(ts => {
+                const li = document.createElement("li");
+                li.textContent = `${ts.start} - ${ts.end}: ${ts.text}`;
+                timestampsList.appendChild(li);
+            });
+        };
+    </script>
+</body>
+</html>
