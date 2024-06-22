@@ -26,13 +26,13 @@ uvicorn main:app --reload
 
 3. Upload an audio file to get the transcription and summary.
 
-# Acknowledgements
+# Acknowledgements ⭐
 * OpenAI Whisper
 * Hugging Face Transformers
 * FastAPI
 
- # Final Note⭐:
-* <h3> Bug fixing, Code error or Anything Raise issue🤚. If it any have.</h3>
-* <h3> Happy to hear your sugesstions🤝 about this project.</h3>
-* <h3> Feel Free to Give ⭐ to this Repository.</h3>
-* <h3> Thank you very much for visiting ❤️.</h3>
+ # Final Note ⭐:
+* <h4> Bug fixing, Code error or Anything Raise issue🤚. If it any have.</h4>
+* <h4> Happy to hear your sugesstions🤝 about this project.</h4>
+* <h4> Feel Free to Give ⭐ to this Repository.</h4>
+* <h4> Thank you very much for visiting ❤️.</h4>
